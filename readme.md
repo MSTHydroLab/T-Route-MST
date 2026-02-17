@@ -235,21 +235,4 @@ docker run -it -v "$(pwd)/ck_2018_2020:/ngen/ngen/data" \
 
 # Inside container:
 ./run.sh
-
 ```
-
----
-
-## Authors
-
-**Md Saiduzzaman**  
-Graduate Research Assistant  
-Department of Civil, Architectural and Environmental Engineering  
-Missouri University of Science & Technology  
-
-**Dr. Bong-Chul Seo**  
-Assistant Professor  
-Department of Civil, Architectural and Environmental Engineering  
-Missouri University of Science & Technology  
-
----
