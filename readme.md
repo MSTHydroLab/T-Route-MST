@@ -237,9 +237,6 @@ docker run -it -v "$(pwd)/ck_2018_2020:/ngen/ngen/data" \
 ./run.sh
 
 ---
-
----
-
 ## Authors
 
 **Md Saiduzzaman**  
