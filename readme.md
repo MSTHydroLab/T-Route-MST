@@ -10,8 +10,6 @@ This guide provides step-by-step instructions for setting up and using the modif
 - [Part 1: Local Setup with Modified T-Route](#part-1-local-setup-with-modified-troute)
 - [Part 2: Running NextGen in a Box](#part-2-running-nextgen-in-a-box)
 - [Part 3: Calibration with ngen-cal](#part-3-calibration-with-ngen-cal)
-- [Troubleshooting](#troubleshooting)
-- [Additional Resources](#additional-resources)
 
 ---
 
@@ -242,4 +240,5 @@ docker run -it -v "$(pwd)/ck_2018_2020:/ngen/ngen/data" \
 ./run.sh
 
 ---
+
 
