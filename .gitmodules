@@ -1,0 +1,6 @@
+[submodule "t-route-MST"]
+	path = t-route-MST
+	url = https://github.com/said-uzzaman/t-route-MST.git
+[submodule "ngen"]
+	path = ngen
+	url = https://github.com/said-uzzaman/ngen.git
