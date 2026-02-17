@@ -157,8 +157,6 @@ cd ngen-cal
 docker build -t ngiab-cal:custom .
 ```
 
-> **Build Time:** 10-20 minutes
-
 ### Step 3: Prepare Calibration Configuration
 
 Extract calibration-specific configuration from your data directory:
@@ -195,7 +193,6 @@ docker run -it \
 ```bash
 ./run.sh
 ```
-
 
 ## Example: Complete Workflow
 
@@ -241,4 +238,18 @@ docker run -it -v "$(pwd)/ck_2018_2020:/ngen/ngen/data" \
 
 ---
 
+---
 
+## Authors
+
+**Md Saiduzzaman**  
+Graduate Research Assistant  
+Department of Civil, Architectural and Environmental Engineering  
+Missouri University of Science & Technology  
+
+**Dr. Bong-Chul Seo**  
+Assistant Professor  
+Department of Civil, Architectural and Environmental Engineering  
+Missouri University of Science & Technology  
+
+---
