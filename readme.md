@@ -40,21 +40,22 @@ git clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git
 cd NGIAB-CloudInfra
 ```
 
-### Step 2: Use the Bundled Source Code
+### Step 2: Configure the NGIAB Dockerfile
 
-The modified T-Route and NextGen source code are included directly
-in this repository:
+Open `NGIAB-CloudInfra/docker/Dockerfile`.
 
-- `t-route-MST/`
-- `ngen/`
-- `t-route-workshop/`
+The original repository settings are:
 
-These directories contain independent copies of the source code
-without Git submodule connections.
+```dockerfile
+ENV TROUTE_REPO=CIROH-UA/t-route
+ENV TROUTE_BRANCH=ngiab
+ENV NGEN_REPO=CIROH-UA/ngen
+ENV NGEN_BRANCH=ngiab
+```
 
-**Docker build note:** The NGIAB Dockerfile must be adapted to use
-these local source directories instead of cloning separate repositories.
-The Docker build instructions below require that adaptation.
+To use the modified implementations, update these four variables to point to separate GitHub repositories containing the modified T-Route and ngen source code.
+
+**Note:** The existing Dockerfile expects separate repositories.
 
 ---
 
