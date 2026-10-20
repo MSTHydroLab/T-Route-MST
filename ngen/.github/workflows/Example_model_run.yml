@@ -1,0 +1,22 @@
+name: Build and Run NGEN on example data
+
+on:
+  push:
+    branches: [ release-* ]
+  pull_request:
+    branches: [ master, release-* ]
+jobs:
+    Build_and_Run_Model:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Build the NGEN image
+        run: docker build --file ./docker/ngen.dockerfile --tag localbuild/ngen:latest .
+  
+      - name: Run the NGEN model on example data
+        run: |
+          docker run --rm -i --mount type=bind,source="$(pwd)"/data,target=/ngen_build/data,readonly \
+          localbuild/ngen:latest \
+          ./ngen data/catchment_data.geojson '' data/nexus_data.geojson '' data/example_realization_config.json

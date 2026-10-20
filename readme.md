@@ -40,33 +40,23 @@ git clone https://github.com/CIROH-UA/NGIAB-CloudInfra.git
 cd NGIAB-CloudInfra
 ```
 
-### Step 2: Modify Dockerfile with MSTHydroLab Repositories
+### Step 2: Use the Bundled Source Code
 
-Navigate to the Docker directory and open the Dockerfile:
+The modified T-Route and NextGen source code are included directly
+in this repository:
 
-```bash
-cd docker
-```
+- `t-route-MST/`
+- `ngen/`
+- `t-route-workshop/`
 
-Locate the following environment variables in the `Dockerfile`:
+These directories contain independent copies of the source code
+without Git submodule connections.
 
-```dockerfile
-ENV TROUTE_REPO=CIROH-UA/t-route
-ENV TROUTE_BRANCH=ngiab
-ENV NGEN_REPO=CIROH-UA/ngen
-ENV NGEN_BRANCH=ngiab
-```
+**Docker build note:** The NGIAB Dockerfile must be adapted to use
+these local source directories instead of cloning separate repositories.
+The Docker build instructions below require that adaptation.
 
-**Replace them with:**
-
-```dockerfile
-ENV TROUTE_REPO=said-uzzaman/t-route-MST
-ENV TROUTE_BRANCH=main
-ENV NGEN_REPO=said-uzzaman/ngen
-ENV NGEN_BRANCH=main
-```
-
-> **Note:** Adjust the branch names (`main`) if your modified repositories use different branch names (e.g., `ngiab`, `master`, or `develop`).
+---
 
 ### Step 3: Build the Custom Docker Image
 

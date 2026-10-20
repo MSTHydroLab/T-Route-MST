@@ -1,0 +1,7 @@
+run*
+run_bmi
+run_bmi_forcings_pass
+run_bmi_forcings_read
+z_trash
+test/run_pet_bmi_test
+cmake_build/

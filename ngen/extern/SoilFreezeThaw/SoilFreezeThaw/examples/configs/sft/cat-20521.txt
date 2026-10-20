@@ -1,0 +1,11 @@
+verbosity=none
+soil_moisture_bmi=1
+end_time=1.[d]
+dt=1.0[h]
+soil_params.smcmax=0.40950945[m/m]
+soil_params.b=5.0[]
+soil_params.satpsi=0.141000003[m]
+soil_params.quartz=0.4[]
+ice_fraction_scheme=Schaake
+soil_z=0.1,0.3,1.0,2.0[m]
+soil_temperature=280.15,280.15,280.15,280.15[K]

@@ -1,0 +1,60 @@
+name: 'Checkout and build tests'
+description: 'This action checks out the commit, sets up Ngen environemnt.'
+author: 'hellkite500'
+inputs:
+    targets:
+        required: false
+        description: 'Build targets'
+        default: 'all'
+    build-cores:
+      required: false
+      description: 'Number of cores to use for parallel builds'
+      default: '1'
+    build-dir:
+      required: false
+      description: 'Name of the build directory to run cmake in'
+      default: 'cmake_build'
+    mod-dir:
+      required: true
+      description: 'Path to the submodule with CMakeLists.txt to build'
+    initialize:
+      description: 'Initialize the ngen submodule, default'
+      required: false
+      default: 'true'
+    cmake-flags:
+      desciption: 'Options to pass to the cmake build configuration, e.g. -D<var> defines'
+      required: false
+      default: ''
+outputs:
+  build-dir:
+    description: "Directory build was performed in"
+    value: ${{ steps.cmake_init.outputs.build-dir }}
+runs:
+    using: 'composite'
+    steps:
+        #This may be redundant
+        - name: Init Submodules
+          if: ${{ inputs.initialize == 'true' }} #not true is false, don't init
+          run: git submodule update --init --recursive -- ${{ inputs.mod-dir }}
+          shell: bash
+
+        - name: Configure Fortran Compiler
+          if: |
+            runner.os == 'macOS'
+          run: |
+            # see macOS image readmes for supported versions
+            # https://github.com/actions/runner-images/tree/main/images/macos
+            echo FC="gfortran-12" >> $GITHUB_ENV
+          shell: bash
+
+        - name: Cmake Initialization
+          id: cmake_init
+          run: |
+            cmake -B ${{ inputs.mod-dir}}/${{ inputs.build-dir }} -S ${{ inputs.mod-dir }} ${{ inputs.cmake-flags }}
+            echo "build-dir=$(echo ${{ inputs.mod-dir}}/${{ inputs.build-dir }})" >> $GITHUB_OUTPUT
+          shell: bash
+
+        - name: Build Targets
+          #cmake >= 3.15 can build multiple targets
+          run: cmake --build ${{ inputs.mod-dir}}/${{ inputs.build-dir }} --target ${{ inputs.targets }} -- -j  ${{ inputs.build-cores }} VERBOSE=1
+          shell: bash

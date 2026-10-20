@@ -1,0 +1,5 @@
+
+# Large forcing and archived data
+*.nc
+*.zip
+data/
